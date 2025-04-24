@@ -1,61 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="description" content="NS-VIMPC">
-    <meta name="keywords" content="Safe control">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Def-MARL</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="NS-VIMPC">
+  <meta name="keywords" content="Multi-agent systems; Reinforcement Learning; Distributed control; Safe control; Epigraph form; Graph neural networks">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NS-VIMPC</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="./static/css/index.css">
-    <!-- <link rel="icon" href="./static/images/favicon.png"> -->
-    <link rel="icon" type="image/svg+xml" href="./static/images/favicon.svg"/>
-    <link rel="icon" type="image/png" href="./static/images/favicon.png"/>
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.png"> -->
+  <link rel="icon" type="image/svg+xml" href="./static/images/favicon.svg" />
+  <link rel="icon" type="image/png" href="./static/images/favicon.png" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
 </head>
-
 <body>
 
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+<!--  <div class="navbar-menu">-->
+<!--    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">-->
+<!--      <a class="navbar-item" href="https://syzhang092218-source.github.io/">-->
+<!--      <span class="icon">-->
+<!--          <i class="fas fa-home"></i>-->
+<!--      </span>-->
+<!--      </a>-->
+
+<!--      <div class="navbar-item has-dropdown is-hoverable">-->
+<!--        <a class="navbar-link">-->
+<!--          More Research-->
+<!--        </a>-->
+<!--        <div class="navbar-dropdown">-->
+<!--          <a class="navbar-item" href="https://mit-realm.github.io/dgppo/">-->
+<!--            DGPPO: Discrete GCBF Proximal Policy Optimization for Multi-agent Safe Optimal Control-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://mit-realm.github.io/gcbfplus/">-->
+<!--            GCBF+: A Neural Graph Control Barrier Function Framework for Distributed Safe Multi-Agent Control-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://mit-realm.github.io/gcbf-website/">-->
+<!--            GCBFv0: Neural Graph Control Barrier Functions for Distributed Safe Multi-agent Control-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://arxiv.org/abs/2311.13714">-->
+<!--            Survey: Learning Safe Control for Multi-Robot Systems: Methods, Verification, and Open Challenges-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://mit-realm.github.io/neuriss-website/">-->
+<!--            NeurISS: Learning stabilizing controllers for networked dynamical systems-->
+<!--          </a>-->
+<!--          <a class="navbar-item" href="https://realm.mit.edu">-->
+<!--            REALM Website-->
+<!--          </a>-->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
 <section class="hero">
-    <div class="hero-body">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered">
-                <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">Safe Beyond the Horizon: Efficient Sampling-based MPC with
-                        Neural Control Barrier Functions</h1>
-                    <div class="is-size-5 publication-authors">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Safe Beyond the Horizon: Efficient Sampling-based MPC with Neural Control Barrier Functions</h1>
+          <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=KLQPAEkAAAAJ&hl=en">Ji Yin</a><sup>*1</sup>,</span>
-                        <span class="author-block">
-                <a href="https://oswinso.xyz/">Oswin So</a><sup>*2</sup>,</span>
-                        <span class="author-block">
-              <a href="https://ericyangyu.github.io/">Eric Yu</a><sup>2</sup>,</span>
-                        <span class="author-block">
-              <a href="http://chuchu.mit.edu/">Chuchu Fan</a><sup>2</sup>,</span>
-                        <span class="author-block">
-              <a href="http://chuchu.mit.edu/">Panagiotis Tsiotras</a><sup>1</sup></span>
-                    </div>
+            <span class="author-block">
+              <a href="https://oswinso.xyz/">Oswin So</a><sup>*2</sup>,</span>
+            <span class="author-block">
+              <a href="https://ericyangyu.github.io/">Eric Yang Yu</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="http://chuchu.mit.edu/">Chuchu Fan</a><sup>2</sup>, </span>
+            <span class="author-block">
+              <a href="https://ae.gatech.edu/directory/person/panagiotis-tsiotras">Panagiotis Tsiotras</a><sup>1</sup></span>
+          </div>
 
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block"><sup>*</sup>Equal contribution &nbsp&nbsp&nbsp&nbsp<sup>1</sup>Georgia Institute of Technology &nbsp&nbsp&nbsp&nbsp<sup>2</sup>Massachusetts Institute of Technology</span>
-                    </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution &nbsp&nbsp&nbsp&nbsp<sup>1</sup>Georgia Institute of Technology &nbsp&nbsp&nbsp&nbsp<sup>2</sup>Massachusetts Institute of Technology</span>
+          </div>
 
-                    <div class="column has-text-centered">
-                        <div class="publication-links">
-                            <!-- PDF Link. -->
-                            <span class="link-block">
-                <a href="https://arxiv.org/pdf/2502.15006"
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2502.15006v1"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -63,8 +113,8 @@
                   <span>Paper</span>
                 </a>
               </span>
-                            <span class="link-block">
-                <a href="https://arxiv.org/abs/2502.15006"
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2502.15006v1"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -72,24 +122,181 @@
                   <span>arXiv</span>
                 </a>
               </span>
-                            <span class="link-block">
-                <a href="https://github.com/MIT-REALM/ns-vimpc/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-                        </div>
-
-                    </div>
-                </div>
             </div>
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-</body>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3"><center><tt>Neural Shield Variational Inference Model Predictive Control (VIMPC)</tt></center></h2>
+        <center>
+          <img width=150% src="./figs/VIMPC.png"
+          alt="VIMPC"/>
+        </center>
+      <div class="column">
+      <div class="content">
+        <p>
+          Offline, we collect a dataset and train a NN approximation \(B_\theta\) of a DCBF.
+    Online, we modify the VIMPC architecture to use resampling-based rollouts to improve the sampling distribution of the Monte Carlo estimator in the presence of the DCBF state constraints.
+    We also integrate the DCBF safety condition into the optimization objective function.
+        </p>
+      </div>
+    </div>
+      <div class="hero-body">
+        <h2 class="title is-4">Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region</h2>
+        <center>
+          <img width=55.5% src="./figs/RBRDemonstration.png"
+          alt="Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region"/>
+          <img width=55.5% src="./figs/RBR.png"
+          alt="Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region"/>
+        </center>
+      </div>
 
+      <div class="hero-body">
+        <h2 class="title is-4">Simulations on Autorally, a 1/5 scale off-road autonomous driving platform</h2>
+        <center>
+          <img width=42% src="./figs/Autorally_mppi.gif"
+          alt="Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region"/>
+          <img width=42% src="./figs/Autorally_NS-MPPI.gif"
+          alt="Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region"/>
+        </center>
+      </div>
+      <div class="column">
+      <div class="content">
+        <p>
+          While the original MPPI controller (Left) leads to a collision, the NS-MPPI controller (Right) is able to reach the goal safely.
+        </p>
+      </div>
+    </div>
+      <div class="hero-body">
+        <h2 class="title is-4">Drone navigation task to travel through a narrow tunnel close to the ground, considering ground effect of the rotor</h2>
+        <center>
+          <img width=70% src="./figs/Drone_Shield_MPPI.gif"
+          alt="Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region"/>
+          <img width=70% src="./figs/Drone_NS_MPPI.gif"
+          alt="Inspired by particle filter, Resampling-based Rollouts (RBR) concentrates all sampled trajectories in safe region"/>
+        </center>
+      </div>
+      <div class="column">
+      <div class="content">
+        <p>
+          The Shield-MPPI controller (Top) leads the drone to crash, the NS-MPPI controller (Down) navigates through the tunnel safely.
+        </p>
+      </div>
+    </div>
+      <div class="hero-body">
+        <h2 class="title is-4">AutoRally Experiment</h2>
+        <center>
+          <video width="49.5%" autoplay="" muted="" loop="" controls>
+            <source src="videos/Experiment1.mp4" type="video/mp4">
+            </video>
+          <video width="49.5%" autoplay="" muted="" loop="" controls>
+            <source src="videos/Experiment2.mp4" type="video/mp4">
+          </video>
+        </center>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!--<section class="hero teaser">-->
+<!--  <div class="container is-max-desktop">-->
+<!--    <div class="columns is-centered has-text-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--        <h2 class="title is-3">Abstract</h2>-->
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            A common problem when using model predictive control (MPC) in practice is the satisfaction of safety specifications beyond the prediction horizon.-->
+<!--            While theoretical works have shown that safety can be guaranteed by enforcing a suitable terminal set constraint or a sufficiently long prediction horizon, these techniques are difficult to apply and thus are rarely used by practitioners, especially in the case of general nonlinear dynamics.-->
+<!--            To solve this problem, we impose a tradeoff between exact recursive feasibility, computational tractability, and applicability to ``black-box'' dynamics by learning an approximate discrete-time control barrier function and-->
+<!--            incorporating it into a variational inference MPC (VIMPC), a sampling-based MPC paradigm.-->
+<!--            To handle the resulting state constraints, we further propose a new sampling strategy that greatly reduces the variance of the estimated optimal control, improving the sample efficiency, and enabling real-time planning on a CPU.-->
+<!--            The resulting Neural Shield-VIMPC (NS-VIMPC) controller yields substantial safety improvements compared to existing sampling-based MPC controllers, even under badly designed cost functions.-->
+<!--            We validate our approach in both simulation and real-world hardware experiments.-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;/ Abstract. &ndash;&gt;-->
+<!--  </div>-->
+<!--</section>-->
+
+
+<section class="section">
+
+  <div class="container is-max-desktop">
+  <div class="column"></div>
+  <h2 class="title is-3">Related Work</h2>
+  <div class="column">
+    <div class="content">
+      <div class="content has-text-justified">
+        <p>
+          This work is part of our line of work on designing safe and efficient Variational Inference MPC. Other works on this line includes:
+          <br>
+          <br>
+          <a href="https://ieeexplore.ieee.org/document/9811615">CC-MPPI (ICRA 2022)</a>: Using covariance steering to improve the sample efficiency for MPPI.
+          <br>
+          <a href="https://ieeexplore.ieee.org/document/10161100">RA-MPPI (ICRA 2023)</a>: A sampling-based MPC that accounts for arbitrary forms of dynamical and environmental disturbances.
+          <br>
+          <a href="https://ieeexplore.ieee.org/document/10250917">Shield-MPPI (RA-L)</a>: Achieving safety while significantly saves computational resources for sampling-based MPC by integrating an approximate control barrier function.
+          <br>
+          <a href="https://arxiv.org/html/2408.00494v2">BSS-MPPI (CDC 2024)</a>: Extending the Shield-MPPI to a more general setting with belief-space dynamics.
+          <br>
+          For a survey of the field of learning safe control for multi-robot systems, see <a rel="survey" href="https://arxiv.org/pdf/2311.13714.pdf">this paper</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{yin2025nsvimpc,
+      title={Safe Beyond the Horizon: Efficient Sampling-based MPC with Neural Control Barrier Functions},
+      author={Yin, Ji and So, Oswin and Yang Yu, Eric and Fan, Chuchu and Tsiotras, Panagiotis},
+      booktitle={Proceedings of Robotics: Science and Systems},
+      year={2025},
+      month={Jun. 21 -- 25},
+      address={Los Angeles, CA}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This webpage template is based that used by <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
 </html>
