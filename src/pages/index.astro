@@ -1,0 +1,524 @@
+---
+import Layout, {type GAInfo} from '../layouts/Layout.astro';
+import {type Author} from "../components/AuthorBlock.astro";
+import {type Link} from "../components/LinkBlock.astro";
+import ReferenceList from '../components/ReferenceList.astro'
+import references from './references.json'; // Path to your JSON file
+
+const site_title = "";
+const title = "Safe Beyond the Horizon:";
+const subtitle = "Efficient Sampling-based MPC with Neural Control Barrier Functions"
+
+const authors: Author[] = [
+	{"name": "Ji Yin", "url": "https://aeroastro.mit.edu/realm/team/ji-yin", "number": 1, "asterisk": true},
+	{"name": "Oswin So", "url": "https://oswinso.xyz", "number": 2, "asterisk": true},
+	{"name": "Eric Yu", "url": "https://ericyangyu.github.io", "number": 2},
+	{"name": "Chuchu Fan", "url": "https://chuchu.mit.edu", "number": 2},
+	{"name": "Panagiotis Tsiotras", "url": "https://ae.gatech.edu/directory/person/panagiotis-tsiotras", "number": 1}
+]
+
+const links: Link[] = [
+	{"name": "Paper", "url": "https://arxiv.org/pdf/2502.15006", "icon_class": "fas fa-file-pdf"},
+	{"name": "arXiv", "url": "https://arxiv.org/abs/2502.15006", "icon_class": "ial icon-arxiv-logo-small"},
+]
+
+const bibtex = `
+@inproceedings{yin2025safe,
+  title     = {Safe Beyond the Horizon: Efficient Sampling-based MPC with Neural Control Barrier Functions},
+  author    = {Yin, Ji and So, Oswin and Yang Yu, Eric and Fan, Chuchu and Tsiotras, Panagiotis},
+  booktitle = {Proceedings of Robotics: Science and Systems},
+  year      = {2025}
+}
+`.trim();
+
+const ga: GAInfo = {"id": "G-XSZ0VNSN4H"};
+
+---
+
+<Layout site_title={site_title} title={title} subtitle={subtitle} authors={authors} links={links} bibtex={bibtex} ga={ga}>
+	<section class="teaser container is-max-desktop">
+		<div class="teaser-vids">
+			<img src=`${import.meta.env.BASE_URL}/media/method_diagram.jpg` />
+		</div>
+	</section>
+
+
+	<main>
+
+
+		<section class="container is-max-desktop">
+			<header>
+				<h2 class="section-title">Resampling-based Rollouts (RBR)</h2>
+			</header>
+			<div class="section-body flex-col">
+				<p is:raw>
+					We propose a new rollout strategy, <strong>resampling-based rollouts (RBR)</strong> that more efficiently concentrates samples away from the unsafe region.
+					Inspired by particle-filters, we <i>resample</i> particles that have violated any safety constraints among the set of particle that are still safe during the rollout process.
+				</p>
+				<figure>
+					<img src={`${import.meta.env.BASE_URL}/media/RBRVsNormalSampling1.png`} alt="MPPI vs NS-MPPI" />
+					<figcaption>
+						RBR rewires all sampled trajectories to be safe, resulting in a more accurate <span class="tab-green">sampling distribution</span>.
+						In contrast, the standard approach samples from a Gaussian distribution and wastes computation on unsafe trajectories that collide early in the rollout.
+					</figcaption>
+				</figure>
+				<figure>
+					<img src={`${import.meta.env.BASE_URL}/media/RBR.png`} alt="MPPI vs NS-MPPI" />
+				</figure>
+			</div>
+		</section>
+
+		<section class="container is-max-desktop">
+			<header>
+				<h2 class="section-title">Discrete Policy Neural CBFs</h2>
+			</header>
+			<div class="section-body flex-col">
+				<p>
+					We extend <a href="https://mit-realm.github.io/pncbf">previous work on learning neural CBFs</a> to the discrete-time setting.
+					Notably, we use the fact that policy-conditioned value function for the discrete-time avoid problem is a discrete-time CBF <i>for any policy</i>.
+				</p>
+			</div>
+		</section>
+
+		<section id="sim_experiments" class="container is-max-desktop">
+			<header>
+				<h2 class="section-title">Simulation Experiments</h2>
+			</header>
+
+			<div class="section-body">
+				<div>
+				<h3 class="task-name">AutoRally</h3>
+					<div class="video-row"> <!-- Add a wrapper for the row -->
+						<section class="task-section">
+							<div class="video-container">
+								<h4 class="method-name">MPPI</h4>
+								<img src={`${import.meta.env.BASE_URL}/media/Autorally_mppi.gif`} alt="MPPI" />
+							</div>
+						</section>
+
+						<section class="task-section">
+							<div class="video-container">
+								<h4 class="method-name">NS-MPPI (Ours)</h4>
+								<img src={`${import.meta.env.BASE_URL}/media/Autorally_NS-MPPI.gif`} alt="NS-MPPI" />
+							</div>
+						</section>
+					</div>
+				</div>
+
+				<div>
+					<h3 class="task-name">Drone</h3>
+					<div class="video-row"> <!-- Add a wrapper for the row -->
+						<section class="task-section">
+							<div class="video-container">
+								<h4 class="method-name">Shield MPPI</h4>
+								<img src={`${import.meta.env.BASE_URL}/media/Drone_Shield_MPPI.gif`} alt="Shield MPPI" />
+							</div>
+							<div class="video-container">
+								<h4 class="method-name">NS-MPPI (Ours)</h4>
+								<img src={`${import.meta.env.BASE_URL}/media/Drone_NS_MPPI.gif`} alt="NS-MPPI" />
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="suppl_video" class="container is-max-desktop">
+			<header>
+				<h2 class="section-title">AutoRally Hardware Experiments</h2>
+			</header>
+			<div class="section-body">
+				<iframe src="https://www.youtube.com/embed/SRgP8fOBqI8" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+				</iframe>
+			</div>
+		</section>
+
+
+		<section id="abstract" class="container is-max-desktop">
+			<header>
+				<h2 class="section-title">Abstract</h2>
+			</header>
+			<div class="section-body has-text-justified">
+				<p>
+					 A common problem when using model predictive control (MPC) in practice is the satisfaction of safety specifications beyond the prediction horizon.
+					While theoretical works have shown that safety can be guaranteed by enforcing a suitable terminal set constraint or a sufficiently long prediction horizon, these techniques are difficult to apply and thus are rarely used by practitioners, especially in the case of general nonlinear dynamics.
+					To solve this problem, we impose a tradeoff between exact recursive feasibility, computational tractability, and applicability to ''black-box'' dynamics by learning an approximate discrete-time control barrier function and incorporating it into a variational inference MPC (VIMPC), a sampling-based MPC paradigm.
+					To handle the resulting state constraints, we further propose a new sampling strategy that greatly reduces the variance of the estimated optimal control, improving the sample efficiency, and enabling real-time planning on a CPU.
+					The resulting Neural Shield-VIMPC (NS-VIMPC) controller yields substantial safety improvements compared to existing sampling-based MPC controllers, even under badly designed cost functions.
+					We validate our approach in both simulation and real-world hardware experiments.
+				</p>
+			</div>
+		</section>
+
+</Layout>
+
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		margin: 3rem 0;
+		padding: 0 1.25rem;
+	}
+
+	main > section.container {
+		width: 100%;
+		margin: 1rem auto;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.section-body {
+		display: flex;
+		align-items: center;
+		row-gap: 0.8em;
+		column-gap: 1em;
+		flex-wrap: wrap;
+		justify-content: space-around;
+
+		font-size: 1.2em;
+	}
+
+	.full-width {
+		width: 100%;
+	}
+
+	.display-eq {
+		font-size: large;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.display-eq {
+			font-size: xx-large;
+		}
+	}
+
+	.section-body > p {
+		align-self: flex-start;
+	}
+
+	.teaser {
+		font-family: "Google Sans", sans-serif;
+		display: flex;
+		align-items: center;
+		gap: 1em;
+		flex-wrap: wrap;
+	}
+
+	.teaser > header {
+		padding: 0 1.25rem;
+	}
+
+	#summary > .section-body {
+		flex-wrap: wrap;
+		text-align: center;
+		flex-direction: column-reverse;
+	}
+
+	.teaser-vids {
+		display: flex; /* Use flexbox for centering */
+		justify-content: center; /* Center horizontally */
+		align-items: center; /* Center vertically if needed */
+	}
+
+	.teaser-vids img {
+		width: 100%; /* Set to the desired size */
+		max-width: 960px; /* Limit maximum size */
+		height: auto; /* Maintain aspect ratio */
+	}
+
+	//#epigraph-form > .section-body {
+	//    flex-direction: column;
+	//}
+
+	.flex-col {
+		flex-direction: column;
+	}
+
+	#experiments > .section-body {
+		flex-direction: column;
+		row-gap: 1.5em;
+		margin: 0 -1rem;
+	}
+
+	#abstract > .section-body {
+		flex-direction: column;
+		row-gap: 1.1em;
+	}
+
+
+	@media screen and (min-width: 1024px) {
+		.teaser {
+			flex-wrap: nowrap;
+		}
+
+		.teaser > header {
+			padding: 0 0;
+		}
+
+		#summary > .section-body {
+			flex-wrap: nowrap;
+			flex-direction: row;
+		}
+
+		main {
+			padding: 0 0;
+		}
+	}
+
+	.teaser > header {
+		text-align: center;
+		font-size: 1.7rem;
+		flex: 1 4 auto;
+	}
+
+	.teaser > .teaser-vids {
+		flex: 1 6 auto;
+		display: flex;
+		max-width: 100%;
+	}
+
+	video {
+		min-width: 5%;
+	}
+
+
+	#summary > .section-body > video {
+		flex: 1 1 auto;
+		max-height: 80vh;
+	}
+
+	h2, h3, h4 {
+		color: #363636;
+	}
+
+	section {
+		font-family: "Open Sans", sans-serif;
+	}
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		border: 0;
+	}
+
+	.avoidwrap {
+		display: inline-block;
+	}
+
+	#unicycle-vid-col {
+		width: 100.0%
+	}
+
+	#unicycle-txt-col {
+		width: 100.0%;
+	}
+
+	.section-title {
+		font-weight: 600;
+		line-height: 1.125;
+
+		font-size: 1.6rem;
+	}
+
+	.task-name {
+		font-weight: 600;
+		font-size: 1.4rem;
+		text-align: center;
+	}
+
+	.section-title:not(:last-child) {
+		margin-bottom: 1.5rem;
+	}
+
+	@media screen and (min-width: 1280px) {
+		.short-tag {
+			font-size: 2rem;
+		}
+
+		.section-title {
+			font-size: 1.75rem;
+		}
+
+		.section-title:not(:last-child) {
+			margin-bottom: 1.5rem;
+		}
+
+		#unicycle-vid-col {
+			width: 40.0%
+		}
+
+		#unicycle-txt-col {
+			width: 60.0%;
+		}
+	}
+
+	@media screen and (min-width: 2000px) {
+		#unicycle-vid-col {
+			width: 50%;
+		}
+
+		#unicycle-txt-col {
+			width: 50%;
+		}
+	}
+
+	u {
+		text-decoration: none;
+		border-bottom: 1px solid #444444;
+	}
+
+	#abstract > .section-body > p {
+		font-size: 0.9rem;
+	}
+
+	@media screen and (min-width: 1024px) {
+		#abstract > .section-body > p {
+			font-size: 0.95em;
+		}
+	}
+
+	figcaption {
+		font-size: 0.7em;
+	}
+	@media screen and (min-width: 1024px) {
+		figcaption {
+			font-size: 0.9em;
+		}
+	}
+
+	#shade-blue {
+		background-color: #E0F7FA;
+		color: #167783;
+		padding: 0.2em 0.3em;
+	}
+
+	.obj-green {
+		color: #8EBA42;
+		font-weight: 600;
+	}
+
+	.constr-red {
+		color: #E24A33;
+		font-weight: 600;
+	}
+
+	.box-green, .box-red {
+		padding: 0.1em 0.25em;
+	}
+
+	.box-green {
+		background-color: #E8F5E9;
+		color: #3D8840;
+	}
+
+	.box-red {
+		background-color: #FFEBEE;
+		color: #AE2020;
+	}
+
+	dl.task-summary {
+		display: grid;
+		grid-template-columns: min-content auto;
+		margin: 0 auto 0.4em;
+		grid-column-gap: 1em;
+		align-items: center;
+	}
+
+	.def-stabilize {
+		color: hsl(122 58% 20%);
+	}
+
+	.def-avoid {
+		//color: hsl(0 89% 20%);
+		color: hsl(0 89% 30%);
+	}
+
+	@media screen and (min-width: 1024px) {
+		dl.task-summary {
+			max-width: 80%;
+		}
+	}
+
+	dt {
+		grid-column: 1;
+		font-weight: 600;
+		font-size: 1.2em;
+		text-align: center;
+	}
+
+	dd {
+		grid-column: 2;
+	}
+
+	dt, dd {
+		display: table-cell;
+		margin: 0;
+		padding: .5em .5em;
+	}
+
+	.video-row {
+		display: flex;                 /* Use Flexbox for the video row */
+		justify-content: space-between; /* Space videos evenly */
+		flex-wrap: wrap;
+		row-gap: 1em;
+	}
+
+	.task-section {
+		flex: 1 1 360px;                       /* Allow sections to grow equally */
+		margin: 0 2px;               /* Add some margin between sections */
+	}
+
+	.video-container {
+		width: 100%;                   /* Make the video container full width */
+	}
+
+	video {
+		width: 100%;                   /* Make the video take full width of the container */
+		height: auto;                  /* Maintain aspect ratio */
+	}
+
+	iframe {
+		position: relative;
+		aspect-ratio: 16 / 9;
+		//width: 100%;
+		//height: 100%;
+	}
+
+	#sim_experiments > .section-body {
+		row-gap: 1em;
+	}
+
+	.tab-green {
+		color: #2ca02c;
+	}
+
+	.blue-text {
+		color: #348ABD;  /* Set the text color to yellow */
+	}
+
+	.red-text {
+		color: red;  /* Set the text color to yellow */
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	@media screen and (min-width: 1024px) {
+		.lg\:hidden {
+			display: none;
+		}
+
+		.lg\:block {
+			display: block;
+		}
+	}
+
+
+</style>

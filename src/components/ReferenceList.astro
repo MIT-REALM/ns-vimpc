@@ -1,0 +1,109 @@
+---
+export interface ReferenceList {
+    author: string;
+    title: string;
+    journal?: string;
+    conference?: string;
+    volume?: string;
+    issue?: string;
+    pages?: string;
+    year: string;
+    url: string;
+}
+
+export interface Props {
+    references: ReferenceList[];
+}
+
+const { references } = Astro.props;
+---
+
+<section id="references" class="container is-max-desktop">
+    <header>
+        <h2 class="section-title">Related Works</h2>
+    </header>
+    <div class="section-body">
+        <ol class="reference-list">
+            {references.map((reference, index) => {
+                return (
+                    <li id={`ref-${index + 1}`} class="reference-item"> {/* Unique ID for each reference */}
+                        <span class="reference-number">
+                            {index + 1}. {/* Reference number */}
+                        </span>
+                        <span class="reference-text">
+                            {/* Author */}
+                            {reference.author},{' '}
+
+                            {/* Title (clickable link) */}
+                            <a href={reference.url} target="_blank" rel="noopener noreferrer">"{reference.title.trim()}"</a>,{' '}
+
+                            {/* Journal or Conference */}
+                            {reference.journal && <em>{reference.journal}</em>}
+                            {reference.conference && <em>{reference.conference}</em>},{' '}
+
+                            {/* Volume and Issue */}
+                            {reference.volume && `vol. ${reference.volume}, `}
+                            {reference.issue && `no. ${reference.issue}, `}
+                            
+                            {/* Pages */}
+                            {reference.pages && `pp. ${reference.pages}, `}
+                            
+                            {/* Year */}
+                            {reference.year}
+                        </span>
+                    </li>
+                );
+            })}
+        </ol>
+    </div>
+</section>
+
+<style>
+    .section-body {
+        display: flex;
+        align-items: center;
+        row-gap: 0.8em;
+        column-gap: 1em;
+        font-size: 1.2em;
+        flex-direction: column; /* Ensure vertical layout */
+    }
+
+    .reference-list {
+        list-style-type: none; /* Remove default bullet points */
+        padding-left: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+        width: 100%; /* Ensure it takes full width */
+    }
+
+    .reference-item {
+        margin-bottom: 1em; /* Space between reference items */
+        display: flex; /* Use flex to align number and text */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .reference-number {
+        font-weight: bold; /* Make the number bold */
+        margin-right: 0.5em; /* Space between number and author */
+    }
+
+    .reference-text {
+        margin-left: 1em; /* Indent the reference text */
+        flex-grow: 1; /* Allow text to take up remaining space */
+    }
+
+    a {
+        text-decoration: underline;
+        color: blue;
+    }
+
+    a:hover {
+        color: darkblue;
+    }
+
+    /* Ensuring the same style for section titles */
+    .section-title {
+        font-weight: 600;
+        line-height: 1.125;
+        font-size: 1.6rem; /* Adjust as needed to match Abstract */
+    }
+</style>
